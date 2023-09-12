@@ -1,9 +1,6 @@
 grammar JavaFlow;
-
 program : model* EOF ; 
-
-model : ID '(' tensor ',' (layer ',')* tensor ')'
-      ;
+model : ID '(' tensor ',' (layer ',')* tensor ')' ;
 
 layer : 'gmax' tensor    #GlobalMax
       | 'max' tensor     #Max
@@ -27,8 +24,7 @@ layer : 'gmax' tensor    #GlobalMax
       | 'relu'           #Relu
       ;
 
-tensor : (exp 'x')* exp
-       ;
+tensor : (exp 'x')* exp ;
 
 exp : NUM         #Const
     | exp OP exp  #Op
