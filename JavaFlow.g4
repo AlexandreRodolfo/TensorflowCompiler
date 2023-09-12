@@ -18,7 +18,7 @@ layer : 'gmax' tensor    #GlobalMax
       | 'iden'           #Identity
       | 'norm'           #Normalization
       | 'elu'            #Elu
-      | 'exp'            #Exp
+      | 'exp'            #Exponential
       | 'gelu'           #Gelu
       | 'sigmoid'        #Sigmoid
       | 'linear'         #Linear
@@ -27,23 +27,13 @@ layer : 'gmax' tensor    #GlobalMax
       | 'relu'           #Relu
       ;
 
-tensor : (exp 'x')* exp #Tensor
+tensor : (exp 'x')* exp
        ;
 
 exp : NUM         #Const
     | exp OP exp  #Op
     | '(' exp ')' #Group
     ;
-
-activation : 'elu'     #Elu
-           | 'exp'     #Exp
-           | 'gelu'    #Gelu
-           | 'sigmoid' #Sigmoid
-           | 'linear'  #Linear
-           | 'softmax' #Softmax
-           | 'tanh'    #Tanh
-           | 'relu'    #Relu
-           ;
 
 ID : [a-zA-Z]+ ;
 NUM : [0-9]+ ;
