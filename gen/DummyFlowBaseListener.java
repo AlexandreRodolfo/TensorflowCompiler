@@ -112,18 +112,6 @@ public class DummyFlowBaseListener implements DummyFlowListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterActivation(DummyFlowParser.ActivationContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitActivation(DummyFlowParser.ActivationContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterElementWise(DummyFlowParser.ElementWiseContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -143,6 +131,18 @@ public class DummyFlowBaseListener implements DummyFlowListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitTensorWise(DummyFlowParser.TensorWiseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterActivation(DummyFlowParser.ActivationContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitActivation(DummyFlowParser.ActivationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

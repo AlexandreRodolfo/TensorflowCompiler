@@ -1,19 +1,17 @@
 grammar DummyFlow ;
 program : model* EOF ; 
-model : ID '(' (layer ',')* layer ')' ;
+model : ID '(' (layer (',')?)* layer ')' ;
 
 layer : 'gmax'       #GlobalMax
       | 'gavg'       #GlobalAvg
       | 'max' tensor #Max
       | 'avg' tensor #Avg
       | 'norm'       #Normalization
-      | tensor fun*  #Dense
+      | tensor       #Dense
+      | E_OP NUM     #ElementWise
+      | T_OP tensor  #TensorWise
       | ID           #Activation
       ;
-
-fun : E_OP NUM #ElementWise
-    | T_OP tensor #TensorWise
-    ;
 
 tensor : (NUM 'x')* NUM ;
 

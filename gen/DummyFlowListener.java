@@ -99,6 +99,30 @@ public interface DummyFlowListener extends ParseTreeListener {
 	 */
 	void exitDense(DummyFlowParser.DenseContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code ElementWise}
+	 * labeled alternative in {@link DummyFlowParser#layer}.
+	 * @param ctx the parse tree
+	 */
+	void enterElementWise(DummyFlowParser.ElementWiseContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code ElementWise}
+	 * labeled alternative in {@link DummyFlowParser#layer}.
+	 * @param ctx the parse tree
+	 */
+	void exitElementWise(DummyFlowParser.ElementWiseContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code TensorWise}
+	 * labeled alternative in {@link DummyFlowParser#layer}.
+	 * @param ctx the parse tree
+	 */
+	void enterTensorWise(DummyFlowParser.TensorWiseContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code TensorWise}
+	 * labeled alternative in {@link DummyFlowParser#layer}.
+	 * @param ctx the parse tree
+	 */
+	void exitTensorWise(DummyFlowParser.TensorWiseContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code Activation}
 	 * labeled alternative in {@link DummyFlowParser#layer}.
 	 * @param ctx the parse tree
@@ -110,30 +134,6 @@ public interface DummyFlowListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitActivation(DummyFlowParser.ActivationContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code ElementWise}
-	 * labeled alternative in {@link DummyFlowParser#fun}.
-	 * @param ctx the parse tree
-	 */
-	void enterElementWise(DummyFlowParser.ElementWiseContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code ElementWise}
-	 * labeled alternative in {@link DummyFlowParser#fun}.
-	 * @param ctx the parse tree
-	 */
-	void exitElementWise(DummyFlowParser.ElementWiseContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code TensorWise}
-	 * labeled alternative in {@link DummyFlowParser#fun}.
-	 * @param ctx the parse tree
-	 */
-	void enterTensorWise(DummyFlowParser.TensorWiseContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code TensorWise}
-	 * labeled alternative in {@link DummyFlowParser#fun}.
-	 * @param ctx the parse tree
-	 */
-	void exitTensorWise(DummyFlowParser.TensorWiseContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link DummyFlowParser#tensor}.
 	 * @param ctx the parse tree

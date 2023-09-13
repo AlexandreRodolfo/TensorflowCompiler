@@ -19,10 +19,10 @@ public class DummyFlowParser extends Parser {
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
 		ID=10, NUM=11, E_OP=12, T_OP=13, ESPACOS=14;
 	public static final int
-		RULE_program = 0, RULE_model = 1, RULE_layer = 2, RULE_fun = 3, RULE_tensor = 4;
+		RULE_program = 0, RULE_model = 1, RULE_layer = 2, RULE_tensor = 3;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"program", "model", "layer", "fun", "tensor"
+			"program", "model", "layer", "tensor"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
@@ -121,21 +121,21 @@ public class DummyFlowParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(13);
+			setState(11);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==ID) {
 				{
 				{
-				setState(10);
+				setState(8);
 				model();
 				}
 				}
-				setState(15);
+				setState(13);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(16);
+			setState(14);
 			match(EOF);
 			}
 		}
@@ -176,35 +176,44 @@ public class DummyFlowParser extends Parser {
 	public final ModelContext model() throws RecognitionException {
 		ModelContext _localctx = new ModelContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_model);
+		int _la;
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(18);
+			setState(16);
 			match(ID);
-			setState(19);
+			setState(17);
 			match(T__0);
-			setState(25);
+			setState(24);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,1,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(20);
+					setState(18);
 					layer();
-					setState(21);
-					match(T__1);
+					setState(20);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+					if (_la==T__1) {
+						{
+						setState(19);
+						match(T__1);
+						}
+					}
+
 					}
 					} 
 				}
-				setState(27);
+				setState(26);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,1,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
 			}
-			setState(28);
+			setState(27);
 			layer();
-			setState(29);
+			setState(28);
 			match(T__2);
 			}
 		}
@@ -248,12 +257,6 @@ public class DummyFlowParser extends Parser {
 		public TensorContext tensor() {
 			return getRuleContext(TensorContext.class,0);
 		}
-		public List<FunContext> fun() {
-			return getRuleContexts(FunContext.class);
-		}
-		public FunContext fun(int i) {
-			return getRuleContext(FunContext.class,i);
-		}
 		public DenseContext(LayerContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -295,6 +298,20 @@ public class DummyFlowParser extends Parser {
 		}
 	}
 	@SuppressWarnings("CheckReturnValue")
+	public static class ElementWiseContext extends LayerContext {
+		public TerminalNode E_OP() { return getToken(DummyFlowParser.E_OP, 0); }
+		public TerminalNode NUM() { return getToken(DummyFlowParser.NUM, 0); }
+		public ElementWiseContext(LayerContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof DummyFlowListener ) ((DummyFlowListener)listener).enterElementWise(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof DummyFlowListener ) ((DummyFlowListener)listener).exitElementWise(this);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
 	public static class NormalizationContext extends LayerContext {
 		public NormalizationContext(LayerContext ctx) { copyFrom(ctx); }
 		@Override
@@ -320,6 +337,22 @@ public class DummyFlowParser extends Parser {
 		}
 	}
 	@SuppressWarnings("CheckReturnValue")
+	public static class TensorWiseContext extends LayerContext {
+		public TerminalNode T_OP() { return getToken(DummyFlowParser.T_OP, 0); }
+		public TensorContext tensor() {
+			return getRuleContext(TensorContext.class,0);
+		}
+		public TensorWiseContext(LayerContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof DummyFlowListener ) ((DummyFlowListener)listener).enterTensorWise(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof DummyFlowListener ) ((DummyFlowListener)listener).exitTensorWise(this);
+		}
+	}
+	@SuppressWarnings("CheckReturnValue")
 	public static class GlobalAvgContext extends LayerContext {
 		public GlobalAvgContext(LayerContext ctx) { copyFrom(ctx); }
 		@Override
@@ -335,16 +368,15 @@ public class DummyFlowParser extends Parser {
 	public final LayerContext layer() throws RecognitionException {
 		LayerContext _localctx = new LayerContext(_ctx, getState());
 		enterRule(_localctx, 4, RULE_layer);
-		int _la;
 		try {
-			setState(46);
+			setState(43);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__3:
 				_localctx = new GlobalMaxContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(31);
+				setState(30);
 				match(T__3);
 				}
 				break;
@@ -352,7 +384,7 @@ public class DummyFlowParser extends Parser {
 				_localctx = new GlobalAvgContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(32);
+				setState(31);
 				match(T__4);
 				}
 				break;
@@ -360,9 +392,9 @@ public class DummyFlowParser extends Parser {
 				_localctx = new MaxContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(33);
+				setState(32);
 				match(T__5);
-				setState(34);
+				setState(33);
 				tensor();
 				}
 				break;
@@ -370,9 +402,9 @@ public class DummyFlowParser extends Parser {
 				_localctx = new AvgContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(35);
+				setState(34);
 				match(T__6);
-				setState(36);
+				setState(35);
 				tensor();
 				}
 				break;
@@ -380,7 +412,7 @@ public class DummyFlowParser extends Parser {
 				_localctx = new NormalizationContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(37);
+				setState(36);
 				match(T__7);
 				}
 				break;
@@ -388,115 +420,36 @@ public class DummyFlowParser extends Parser {
 				_localctx = new DenseContext(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(38);
+				setState(37);
 				tensor();
-				setState(42);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-				while (_la==E_OP || _la==T_OP) {
-					{
-					{
-					setState(39);
-					fun();
-					}
-					}
-					setState(44);
-					_errHandler.sync(this);
-					_la = _input.LA(1);
-				}
 				}
 				break;
-			case ID:
-				_localctx = new ActivationContext(_localctx);
-				enterOuterAlt(_localctx, 7);
-				{
-				setState(45);
-				match(ID);
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	@SuppressWarnings("CheckReturnValue")
-	public static class FunContext extends ParserRuleContext {
-		public FunContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_fun; }
-	 
-		public FunContext() { }
-		public void copyFrom(FunContext ctx) {
-			super.copyFrom(ctx);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class ElementWiseContext extends FunContext {
-		public TerminalNode E_OP() { return getToken(DummyFlowParser.E_OP, 0); }
-		public TerminalNode NUM() { return getToken(DummyFlowParser.NUM, 0); }
-		public ElementWiseContext(FunContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DummyFlowListener ) ((DummyFlowListener)listener).enterElementWise(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DummyFlowListener ) ((DummyFlowListener)listener).exitElementWise(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class TensorWiseContext extends FunContext {
-		public TerminalNode T_OP() { return getToken(DummyFlowParser.T_OP, 0); }
-		public TensorContext tensor() {
-			return getRuleContext(TensorContext.class,0);
-		}
-		public TensorWiseContext(FunContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof DummyFlowListener ) ((DummyFlowListener)listener).enterTensorWise(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof DummyFlowListener ) ((DummyFlowListener)listener).exitTensorWise(this);
-		}
-	}
-
-	public final FunContext fun() throws RecognitionException {
-		FunContext _localctx = new FunContext(_ctx, getState());
-		enterRule(_localctx, 6, RULE_fun);
-		try {
-			setState(52);
-			_errHandler.sync(this);
-			switch (_input.LA(1)) {
 			case E_OP:
 				_localctx = new ElementWiseContext(_localctx);
-				enterOuterAlt(_localctx, 1);
+				enterOuterAlt(_localctx, 7);
 				{
-				setState(48);
+				setState(38);
 				match(E_OP);
-				setState(49);
+				setState(39);
 				match(NUM);
 				}
 				break;
 			case T_OP:
 				_localctx = new TensorWiseContext(_localctx);
-				enterOuterAlt(_localctx, 2);
+				enterOuterAlt(_localctx, 8);
 				{
-				setState(50);
+				setState(40);
 				match(T_OP);
-				setState(51);
+				setState(41);
 				tensor();
+				}
+				break;
+			case ID:
+				_localctx = new ActivationContext(_localctx);
+				enterOuterAlt(_localctx, 9);
+				{
+				setState(42);
+				match(ID);
 				}
 				break;
 			default:
@@ -536,30 +489,30 @@ public class DummyFlowParser extends Parser {
 
 	public final TensorContext tensor() throws RecognitionException {
 		TensorContext _localctx = new TensorContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_tensor);
+		enterRule(_localctx, 6, RULE_tensor);
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(58);
+			setState(49);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,5,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(54);
+					setState(45);
 					match(NUM);
-					setState(55);
+					setState(46);
 					match(T__8);
 					}
 					} 
 				}
-				setState(60);
+				setState(51);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,5,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
 			}
-			setState(61);
+			setState(52);
 			match(NUM);
 			}
 		}
@@ -575,46 +528,43 @@ public class DummyFlowParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\u000e@\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
-		"\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0002\u0004\u0007\u0004\u0001"+
-		"\u0000\u0005\u0000\f\b\u0000\n\u0000\f\u0000\u000f\t\u0000\u0001\u0000"+
-		"\u0001\u0000\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
-		"\u0005\u0001\u0018\b\u0001\n\u0001\f\u0001\u001b\t\u0001\u0001\u0001\u0001"+
-		"\u0001\u0001\u0001\u0001\u0002\u0001\u0002\u0001\u0002\u0001\u0002\u0001"+
-		"\u0002\u0001\u0002\u0001\u0002\u0001\u0002\u0001\u0002\u0005\u0002)\b"+
-		"\u0002\n\u0002\f\u0002,\t\u0002\u0001\u0002\u0003\u0002/\b\u0002\u0001"+
-		"\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0003\u00035\b\u0003\u0001"+
-		"\u0004\u0001\u0004\u0005\u00049\b\u0004\n\u0004\f\u0004<\t\u0004\u0001"+
-		"\u0004\u0001\u0004\u0001\u0004\u0000\u0000\u0005\u0000\u0002\u0004\u0006"+
-		"\b\u0000\u0000E\u0000\r\u0001\u0000\u0000\u0000\u0002\u0012\u0001\u0000"+
-		"\u0000\u0000\u0004.\u0001\u0000\u0000\u0000\u00064\u0001\u0000\u0000\u0000"+
-		"\b:\u0001\u0000\u0000\u0000\n\f\u0003\u0002\u0001\u0000\u000b\n\u0001"+
-		"\u0000\u0000\u0000\f\u000f\u0001\u0000\u0000\u0000\r\u000b\u0001\u0000"+
-		"\u0000\u0000\r\u000e\u0001\u0000\u0000\u0000\u000e\u0010\u0001\u0000\u0000"+
-		"\u0000\u000f\r\u0001\u0000\u0000\u0000\u0010\u0011\u0005\u0000\u0000\u0001"+
-		"\u0011\u0001\u0001\u0000\u0000\u0000\u0012\u0013\u0005\n\u0000\u0000\u0013"+
-		"\u0019\u0005\u0001\u0000\u0000\u0014\u0015\u0003\u0004\u0002\u0000\u0015"+
-		"\u0016\u0005\u0002\u0000\u0000\u0016\u0018\u0001\u0000\u0000\u0000\u0017"+
-		"\u0014\u0001\u0000\u0000\u0000\u0018\u001b\u0001\u0000\u0000\u0000\u0019"+
-		"\u0017\u0001\u0000\u0000\u0000\u0019\u001a\u0001\u0000\u0000\u0000\u001a"+
-		"\u001c\u0001\u0000\u0000\u0000\u001b\u0019\u0001\u0000\u0000\u0000\u001c"+
-		"\u001d\u0003\u0004\u0002\u0000\u001d\u001e\u0005\u0003\u0000\u0000\u001e"+
-		"\u0003\u0001\u0000\u0000\u0000\u001f/\u0005\u0004\u0000\u0000 /\u0005"+
-		"\u0005\u0000\u0000!\"\u0005\u0006\u0000\u0000\"/\u0003\b\u0004\u0000#"+
-		"$\u0005\u0007\u0000\u0000$/\u0003\b\u0004\u0000%/\u0005\b\u0000\u0000"+
-		"&*\u0003\b\u0004\u0000\')\u0003\u0006\u0003\u0000(\'\u0001\u0000\u0000"+
-		"\u0000),\u0001\u0000\u0000\u0000*(\u0001\u0000\u0000\u0000*+\u0001\u0000"+
-		"\u0000\u0000+/\u0001\u0000\u0000\u0000,*\u0001\u0000\u0000\u0000-/\u0005"+
-		"\n\u0000\u0000.\u001f\u0001\u0000\u0000\u0000. \u0001\u0000\u0000\u0000"+
-		".!\u0001\u0000\u0000\u0000.#\u0001\u0000\u0000\u0000.%\u0001\u0000\u0000"+
-		"\u0000.&\u0001\u0000\u0000\u0000.-\u0001\u0000\u0000\u0000/\u0005\u0001"+
-		"\u0000\u0000\u000001\u0005\f\u0000\u000015\u0005\u000b\u0000\u000023\u0005"+
-		"\r\u0000\u000035\u0003\b\u0004\u000040\u0001\u0000\u0000\u000042\u0001"+
-		"\u0000\u0000\u00005\u0007\u0001\u0000\u0000\u000067\u0005\u000b\u0000"+
-		"\u000079\u0005\t\u0000\u000086\u0001\u0000\u0000\u00009<\u0001\u0000\u0000"+
-		"\u0000:8\u0001\u0000\u0000\u0000:;\u0001\u0000\u0000\u0000;=\u0001\u0000"+
-		"\u0000\u0000<:\u0001\u0000\u0000\u0000=>\u0005\u000b\u0000\u0000>\t\u0001"+
-		"\u0000\u0000\u0000\u0006\r\u0019*.4:";
+		"\u0004\u0001\u000e7\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
+		"\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0001\u0000\u0005\u0000\n\b"+
+		"\u0000\n\u0000\f\u0000\r\t\u0000\u0001\u0000\u0001\u0000\u0001\u0001\u0001"+
+		"\u0001\u0001\u0001\u0001\u0001\u0003\u0001\u0015\b\u0001\u0005\u0001\u0017"+
+		"\b\u0001\n\u0001\f\u0001\u001a\t\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
+		"\u0001\u0002\u0001\u0002\u0001\u0002\u0001\u0002\u0001\u0002\u0001\u0002"+
+		"\u0001\u0002\u0001\u0002\u0001\u0002\u0001\u0002\u0001\u0002\u0001\u0002"+
+		"\u0001\u0002\u0003\u0002,\b\u0002\u0001\u0003\u0001\u0003\u0005\u0003"+
+		"0\b\u0003\n\u0003\f\u00033\t\u0003\u0001\u0003\u0001\u0003\u0001\u0003"+
+		"\u0000\u0000\u0004\u0000\u0002\u0004\u0006\u0000\u0000>\u0000\u000b\u0001"+
+		"\u0000\u0000\u0000\u0002\u0010\u0001\u0000\u0000\u0000\u0004+\u0001\u0000"+
+		"\u0000\u0000\u00061\u0001\u0000\u0000\u0000\b\n\u0003\u0002\u0001\u0000"+
+		"\t\b\u0001\u0000\u0000\u0000\n\r\u0001\u0000\u0000\u0000\u000b\t\u0001"+
+		"\u0000\u0000\u0000\u000b\f\u0001\u0000\u0000\u0000\f\u000e\u0001\u0000"+
+		"\u0000\u0000\r\u000b\u0001\u0000\u0000\u0000\u000e\u000f\u0005\u0000\u0000"+
+		"\u0001\u000f\u0001\u0001\u0000\u0000\u0000\u0010\u0011\u0005\n\u0000\u0000"+
+		"\u0011\u0018\u0005\u0001\u0000\u0000\u0012\u0014\u0003\u0004\u0002\u0000"+
+		"\u0013\u0015\u0005\u0002\u0000\u0000\u0014\u0013\u0001\u0000\u0000\u0000"+
+		"\u0014\u0015\u0001\u0000\u0000\u0000\u0015\u0017\u0001\u0000\u0000\u0000"+
+		"\u0016\u0012\u0001\u0000\u0000\u0000\u0017\u001a\u0001\u0000\u0000\u0000"+
+		"\u0018\u0016\u0001\u0000\u0000\u0000\u0018\u0019\u0001\u0000\u0000\u0000"+
+		"\u0019\u001b\u0001\u0000\u0000\u0000\u001a\u0018\u0001\u0000\u0000\u0000"+
+		"\u001b\u001c\u0003\u0004\u0002\u0000\u001c\u001d\u0005\u0003\u0000\u0000"+
+		"\u001d\u0003\u0001\u0000\u0000\u0000\u001e,\u0005\u0004\u0000\u0000\u001f"+
+		",\u0005\u0005\u0000\u0000 !\u0005\u0006\u0000\u0000!,\u0003\u0006\u0003"+
+		"\u0000\"#\u0005\u0007\u0000\u0000#,\u0003\u0006\u0003\u0000$,\u0005\b"+
+		"\u0000\u0000%,\u0003\u0006\u0003\u0000&\'\u0005\f\u0000\u0000\',\u0005"+
+		"\u000b\u0000\u0000()\u0005\r\u0000\u0000),\u0003\u0006\u0003\u0000*,\u0005"+
+		"\n\u0000\u0000+\u001e\u0001\u0000\u0000\u0000+\u001f\u0001\u0000\u0000"+
+		"\u0000+ \u0001\u0000\u0000\u0000+\"\u0001\u0000\u0000\u0000+$\u0001\u0000"+
+		"\u0000\u0000+%\u0001\u0000\u0000\u0000+&\u0001\u0000\u0000\u0000+(\u0001"+
+		"\u0000\u0000\u0000+*\u0001\u0000\u0000\u0000,\u0005\u0001\u0000\u0000"+
+		"\u0000-.\u0005\u000b\u0000\u0000.0\u0005\t\u0000\u0000/-\u0001\u0000\u0000"+
+		"\u000003\u0001\u0000\u0000\u00001/\u0001\u0000\u0000\u000012\u0001\u0000"+
+		"\u0000\u000024\u0001\u0000\u0000\u000031\u0001\u0000\u0000\u000045\u0005"+
+		"\u000b\u0000\u00005\u0007\u0001\u0000\u0000\u0000\u0005\u000b\u0014\u0018"+
+		"+1";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

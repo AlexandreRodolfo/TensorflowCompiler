@@ -1,5 +1,5 @@
 meumodelo (
     relu,
     gelu,
-    69x4x4 * 3 - 2 @ 16x3x3
+    69x4x4 * 3 - 2 @ 16x5 -> 21
 )
