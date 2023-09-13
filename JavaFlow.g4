@@ -1,6 +1,6 @@
 grammar JavaFlow;
 program : model* EOF ; 
-model : ID '(' tensor ',' (layer ',')* tensor ')' ;
+model : ID '(' (layer ',')* layer ')' ;
 
 layer : 'gmax' tensor    #GlobalMax
       | 'max' tensor     #Max
@@ -11,27 +11,22 @@ layer : 'gmax' tensor    #GlobalMax
       | 'flatten'        #Flatten
       | 'reshape' tensor #Reshape
       | 'resize' tensor  #Resizing
+      | 'rescale'
       | 'dense' tensor   #Dense
       | 'iden'           #Identity
       | 'norm'           #Normalization
-      | 'elu'            #Elu
-      | 'exp'            #Exponential
-      | 'gelu'           #Gelu
-      | 'sigmoid'        #Sigmoid
-      | 'linear'         #Linear
-      | 'softmax'        #Softmax
-      | 'tanh'           #Tanh
-      | 'relu'           #Relu
+      | 'dropout' exp    #Dropout
+      | ID               #Activation
       ;
 
-tensor : (exp 'x')* exp ;
-
-exp : NUM         #Const
-    | exp OP exp  #Op
+exp : tensor      #Const
+    | exp OP NUM  #Op
     | '(' exp ')' #Group
     ;
 
+tensor : (NUM 'x')* NUM ;
+
 ID : [a-zA-Z]+ ;
-NUM : [0-9]+ ;
+NUM : [0-9]+('.'[0-9]+)? ;
 OP : '+'|'-'|'*'|'/' ;
 ESPACOS : (' '|'\n') -> skip ; 
