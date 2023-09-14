@@ -1,5 +1,11 @@
-meumodelo (
-    relu,
-    gelu,
-    69x4x4 * 3 - 2 @ 16x5 -> 21
+analisa_emocao(
+    48x48x1 / 255
+    @ 128x3x3 relu max 2x2 drop 0.4
+    @ 256x3x3 relu max 2x2 drop 0.4
+    @ 512x3x3 relu max 2x2 drop 0.4
+    @ 512x3x3 relu max 2x2 drop 0.4
+    -> 0
+    512 relu drop 0.4
+    256 relu drop 0.4
+    7 softmax
 )

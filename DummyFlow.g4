@@ -1,11 +1,10 @@
 grammar DummyFlow ;
-program : model* EOF ; 
-model : ID '(' (layer (',')?)* layer ')' ;
+program : model+ EOF ; 
+model : ID '(' tensor layer* ')' ;
 
-layer : 'gmax'       #GlobalMax
-      | 'gavg'       #GlobalAvg
-      | 'max' tensor #Max
+layer : 'max' tensor #Max
       | 'avg' tensor #Avg
+      | 'drop' NUM   #Dropout
       | 'norm'       #Normalization
       | tensor       #Dense
       | E_OP NUM     #ElementWise
@@ -15,7 +14,7 @@ layer : 'gmax'       #GlobalMax
 
 tensor : (NUM 'x')* NUM ;
 
-ID : [a-zA-Z]+ ;
+ID : [a-zA-Z_]+ ;
 NUM : [0-9]+('.'[0-9]+)? ;
 E_OP : '+'|'-'|'*'|'/' ;
 T_OP : '~>'|'->'|'@'|'&' ;

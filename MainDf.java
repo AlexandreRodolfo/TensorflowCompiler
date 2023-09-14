@@ -29,16 +29,33 @@ class MainDf {
             return;
         case "Model":
             println("\n%s = Sequential([", t.getChild(0).getText());
-            for (int c=2;c<t.getChildCount()-1;c++) {
-                if (!t.getChild(c).getText().equals(",")) {
-                    generateCode(t.getChild(c));
-                    if (c < t.getChildCount()-2)
-                        println(",");
-                    else
-                        println("");
-                    }
+            print("\tlayers.Input(shape=");
+            generateCode(t.getChild(2));
+            println("),");
+            for (int c=3;c<t.getChildCount()-1;c++) {
+                generateCode(t.getChild(c));
+                if (c < t.getChildCount()-2)
+                    println(",");
+                else
+                    println("");
             }
             println("])");
+            return;
+        case "Max":
+            print("\tlayers.MaxPooling%dD(", 1 + t.getChild(1).getChildCount() / 2);
+            generateCode(t.getChild(1));
+            print(")");
+            return;
+        case "Avg":
+            print("\tlayers.AveragePooling%dD(", 1 + t.getChild(1).getChildCount() / 2);
+            generateCode(t.getChild(1));
+            print(")");
+            return;
+        case "Dropout":
+            print("\tlayers.Dropout(%s)", t.getChild(1).getText());
+            return;
+        case "Normalization":
+            print("\tlayers.Normalization()");
             return;
         case "Dense":
             print("\tlayers.Dense(");
@@ -71,15 +88,12 @@ class MainDf {
                     print(")");
                 }
             else if (t_op.equals("@") || t_op.equals("&")) {
-                println("Devia aparecer");
-                int dim = 1;
+                int dim = tensor.getChildCount() / 2;
                 String filters = tensor.getChild(0).getText();
                 String transpose = (t_op.equals("&")) ? ("Transpose(") : ("");
                 String convShape = (tensor.getChildCount() >= 2) ? (tensor.getChild(2).getText()) : ("");
-                for (int c=4;c<tensor.getChildCount();c+=2){
+                for (int c=4;c<tensor.getChildCount();c+=2)
                     convShape += "," + tensor.getChild(c).getText();
-                    dim++;
-                }
                 print("\tlayers.Conv%dD%s(%s, (%s))", dim, transpose, filters, convShape);
             }
             return;

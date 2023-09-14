@@ -27,30 +27,6 @@ public interface DummyFlowListener extends ParseTreeListener {
 	 */
 	void exitModel(DummyFlowParser.ModelContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code GlobalMax}
-	 * labeled alternative in {@link DummyFlowParser#layer}.
-	 * @param ctx the parse tree
-	 */
-	void enterGlobalMax(DummyFlowParser.GlobalMaxContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code GlobalMax}
-	 * labeled alternative in {@link DummyFlowParser#layer}.
-	 * @param ctx the parse tree
-	 */
-	void exitGlobalMax(DummyFlowParser.GlobalMaxContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code GlobalAvg}
-	 * labeled alternative in {@link DummyFlowParser#layer}.
-	 * @param ctx the parse tree
-	 */
-	void enterGlobalAvg(DummyFlowParser.GlobalAvgContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code GlobalAvg}
-	 * labeled alternative in {@link DummyFlowParser#layer}.
-	 * @param ctx the parse tree
-	 */
-	void exitGlobalAvg(DummyFlowParser.GlobalAvgContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code Max}
 	 * labeled alternative in {@link DummyFlowParser#layer}.
 	 * @param ctx the parse tree
@@ -74,6 +50,18 @@ public interface DummyFlowListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAvg(DummyFlowParser.AvgContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Dropout}
+	 * labeled alternative in {@link DummyFlowParser#layer}.
+	 * @param ctx the parse tree
+	 */
+	void enterDropout(DummyFlowParser.DropoutContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Dropout}
+	 * labeled alternative in {@link DummyFlowParser#layer}.
+	 * @param ctx the parse tree
+	 */
+	void exitDropout(DummyFlowParser.DropoutContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code Normalization}
 	 * labeled alternative in {@link DummyFlowParser#layer}.

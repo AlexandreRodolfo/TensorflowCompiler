@@ -40,30 +40,6 @@ public class DummyFlowBaseListener implements DummyFlowListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterGlobalMax(DummyFlowParser.GlobalMaxContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitGlobalMax(DummyFlowParser.GlobalMaxContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterGlobalAvg(DummyFlowParser.GlobalAvgContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitGlobalAvg(DummyFlowParser.GlobalAvgContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterMax(DummyFlowParser.MaxContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -83,6 +59,18 @@ public class DummyFlowBaseListener implements DummyFlowListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitAvg(DummyFlowParser.AvgContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDropout(DummyFlowParser.DropoutContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDropout(DummyFlowParser.DropoutContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
