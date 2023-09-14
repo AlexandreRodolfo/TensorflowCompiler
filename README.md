@@ -1,6 +1,3 @@
-Repositório dos Programas Desenvolvidos pela disciplia
-de Compiladores da POLI-UPE no Semestre 2023.1
-
 Para compilar o projeto digite os seguintes comandos:
 ```
 #Chama o antlr para compilar a descrição
