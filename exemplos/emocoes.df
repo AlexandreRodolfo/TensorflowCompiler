@@ -1,3 +1,4 @@
+# https://www.kaggle.com/code/myr9988/facial-emotion-recognition-image-classification
 analisa_emocao(
     48x48x1 / 255
     @ 128x3x3 relu max 2x2 drop 0.4

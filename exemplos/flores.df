@@ -1,0 +1,10 @@
+# https://www.tensorflow.org/tutorials/images/classification?hl=pt-br
+img_flores(
+    180x180x3 / 255
+    @ 16x3x3 relu max 1x1
+    @ 32x3x3 relu max 1x1
+    @ 64x3x3 relu max 1x1
+    -> 0
+    128 relu
+    5
+)

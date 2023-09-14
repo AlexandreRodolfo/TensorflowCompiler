@@ -17,7 +17,7 @@ public class DummyFlowParser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, ID=8, NUM=9, E_OP=10, 
-		T_OP=11, ESPACOS=12;
+		T_OP=11, ESPACOS=12, COMENTARIOS=13;
 	public static final int
 		RULE_program = 0, RULE_model = 1, RULE_layer = 2, RULE_tensor = 3;
 	private static String[] makeRuleNames() {
@@ -36,7 +36,7 @@ public class DummyFlowParser extends Parser {
 	private static String[] makeSymbolicNames() {
 		return new String[] {
 			null, null, null, null, null, null, null, null, "ID", "NUM", "E_OP", 
-			"T_OP", "ESPACOS"
+			"T_OP", "ESPACOS", "COMENTARIOS"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -500,7 +500,7 @@ public class DummyFlowParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\f4\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
+		"\u0004\u0001\r4\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
 		"\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0001\u0000\u0005\u0000\n\b"+
 		"\u0000\n\u0000\f\u0000\r\t\u0000\u0001\u0000\u0001\u0000\u0001\u0001\u0001"+
 		"\u0001\u0001\u0001\u0001\u0001\u0005\u0001\u0015\b\u0001\n\u0001\f\u0001"+

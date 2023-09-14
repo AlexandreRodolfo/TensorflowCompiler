@@ -1,14 +1,24 @@
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 import java.util.*;
+import java.io.FileWriter;
 
 class MainDF {
+    static FileWriter myWriter;
+
     static void print(String fmt, Object ...args) {
         System.out.print(String.format(fmt, args));
+        try {
+            myWriter.write(String.format(fmt, args));
+        } catch (Exception e) {}
     }
 
     static void println(String fmt, Object ...args) {
         System.out.println(String.format(fmt, args));
+        try {
+            myWriter.write(String.format(fmt, args));
+            myWriter.write("\n");
+        } catch (Exception e) {}
     }
 
     static String opName(ParseTree t) {
@@ -110,19 +120,25 @@ class MainDF {
     }
 
     public static void main(String args[]) throws Exception {
-        CharStream stream = CharStreams.fromFileName("exemplo.df");
-        DummyFlowLexer lexer = new DummyFlowLexer(stream);
-        TokenStream tkStream = new CommonTokenStream(lexer);
-        DummyFlowParser parser = new DummyFlowParser(tkStream);
+        for (int i=0; i<args.length; i++) {
+            CharStream stream = CharStreams.fromFileName(args[i]);
+            DummyFlowLexer lexer = new DummyFlowLexer(stream);
+            TokenStream tkStream = new CommonTokenStream(lexer);
+            DummyFlowParser parser = new DummyFlowParser(tkStream);
 
-        ParseTree tree = parser.program();
-        if (parser.getNumberOfSyntaxErrors()==0)
-           System.out.println("Programa reconhecido corretamente");
-        else {
-            System.out.println("Programa possui erros corrija-os");
-            return;
+            ParseTree tree = parser.program();
+            if (parser.getNumberOfSyntaxErrors()==0)
+                System.out.println("Programa " + args[i].toString() + " reconhecido corretamente");
+            else {
+                System.out.println("Programa " + args[i].toString() + " possui erros corrija-os");
+                return;
+            }
+
+            System.out.println("Gerando código de máquina:");
+            myWriter = new FileWriter(args[i].substring(0, args[i].lastIndexOf('.')) + ".py");
+            generateCode(tree);
+            myWriter.close();
+            System.out.println("");
         }
-        println("Gerando código de máquina:");
-        generateCode(tree);
     }
 }
