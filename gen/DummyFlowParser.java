@@ -120,21 +120,21 @@ public class DummyFlowParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(9); 
+			setState(11);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			do {
+			while (_la==ID) {
 				{
 				{
 				setState(8);
 				model();
 				}
 				}
-				setState(11); 
+				setState(13);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( _la==ID );
-			setState(13);
+			}
+			setState(14);
 			match(EOF);
 			}
 		}
@@ -182,27 +182,27 @@ public class DummyFlowParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(15);
-			match(ID);
 			setState(16);
-			match(T__0);
+			match(ID);
 			setState(17);
+			match(T__0);
+			setState(18);
 			tensor();
-			setState(21);
+			setState(22);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 3960L) != 0)) {
 				{
 				{
-				setState(18);
+				setState(19);
 				layer();
 				}
 				}
-				setState(23);
+				setState(24);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(24);
+			setState(25);
 			match(T__1);
 			}
 		}
@@ -347,16 +347,16 @@ public class DummyFlowParser extends Parser {
 		LayerContext _localctx = new LayerContext(_ctx, getState());
 		enterRule(_localctx, 4, RULE_layer);
 		try {
-			setState(39);
+			setState(40);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case T__2:
 				_localctx = new MaxContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(26);
-				match(T__2);
 				setState(27);
+				match(T__2);
+				setState(28);
 				tensor();
 				}
 				break;
@@ -364,9 +364,9 @@ public class DummyFlowParser extends Parser {
 				_localctx = new AvgContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(28);
-				match(T__3);
 				setState(29);
+				match(T__3);
+				setState(30);
 				tensor();
 				}
 				break;
@@ -374,9 +374,9 @@ public class DummyFlowParser extends Parser {
 				_localctx = new DropoutContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(30);
-				match(T__4);
 				setState(31);
+				match(T__4);
+				setState(32);
 				match(NUM);
 				}
 				break;
@@ -384,7 +384,7 @@ public class DummyFlowParser extends Parser {
 				_localctx = new NormalizationContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(32);
+				setState(33);
 				match(T__5);
 				}
 				break;
@@ -392,7 +392,7 @@ public class DummyFlowParser extends Parser {
 				_localctx = new DenseContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(33);
+				setState(34);
 				tensor();
 				}
 				break;
@@ -400,9 +400,9 @@ public class DummyFlowParser extends Parser {
 				_localctx = new ElementWiseContext(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(34);
-				match(E_OP);
 				setState(35);
+				match(E_OP);
+				setState(36);
 				match(NUM);
 				}
 				break;
@@ -410,9 +410,9 @@ public class DummyFlowParser extends Parser {
 				_localctx = new TensorWiseContext(_localctx);
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(36);
-				match(T_OP);
 				setState(37);
+				match(T_OP);
+				setState(38);
 				tensor();
 				}
 				break;
@@ -420,7 +420,7 @@ public class DummyFlowParser extends Parser {
 				_localctx = new ActivationContext(_localctx);
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(38);
+				setState(39);
 				match(ID);
 				}
 				break;
@@ -466,25 +466,25 @@ public class DummyFlowParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(45);
+			setState(46);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(41);
-					match(NUM);
 					setState(42);
+					match(NUM);
+					setState(43);
 					match(T__6);
 					}
 					} 
 				}
-				setState(47);
+				setState(48);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
 			}
-			setState(48);
+			setState(49);
 			match(NUM);
 			}
 		}
@@ -500,40 +500,40 @@ public class DummyFlowParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\f3\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
-		"\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0001\u0000\u0004\u0000\n\b"+
-		"\u0000\u000b\u0000\f\u0000\u000b\u0001\u0000\u0001\u0000\u0001\u0001\u0001"+
-		"\u0001\u0001\u0001\u0001\u0001\u0005\u0001\u0014\b\u0001\n\u0001\f\u0001"+
-		"\u0017\t\u0001\u0001\u0001\u0001\u0001\u0001\u0002\u0001\u0002\u0001\u0002"+
+		"\u0004\u0001\f4\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
+		"\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0001\u0000\u0005\u0000\n\b"+
+		"\u0000\n\u0000\f\u0000\r\t\u0000\u0001\u0000\u0001\u0000\u0001\u0001\u0001"+
+		"\u0001\u0001\u0001\u0001\u0001\u0005\u0001\u0015\b\u0001\n\u0001\f\u0001"+
+		"\u0018\t\u0001\u0001\u0001\u0001\u0001\u0001\u0002\u0001\u0002\u0001\u0002"+
 		"\u0001\u0002\u0001\u0002\u0001\u0002\u0001\u0002\u0001\u0002\u0001\u0002"+
-		"\u0001\u0002\u0001\u0002\u0001\u0002\u0001\u0002\u0003\u0002(\b\u0002"+
-		"\u0001\u0003\u0001\u0003\u0005\u0003,\b\u0003\n\u0003\f\u0003/\t\u0003"+
+		"\u0001\u0002\u0001\u0002\u0001\u0002\u0001\u0002\u0003\u0002)\b\u0002"+
+		"\u0001\u0003\u0001\u0003\u0005\u0003-\b\u0003\n\u0003\f\u00030\t\u0003"+
 		"\u0001\u0003\u0001\u0003\u0001\u0003\u0000\u0000\u0004\u0000\u0002\u0004"+
-		"\u0006\u0000\u00008\u0000\t\u0001\u0000\u0000\u0000\u0002\u000f\u0001"+
-		"\u0000\u0000\u0000\u0004\'\u0001\u0000\u0000\u0000\u0006-\u0001\u0000"+
-		"\u0000\u0000\b\n\u0003\u0002\u0001\u0000\t\b\u0001\u0000\u0000\u0000\n"+
-		"\u000b\u0001\u0000\u0000\u0000\u000b\t\u0001\u0000\u0000\u0000\u000b\f"+
-		"\u0001\u0000\u0000\u0000\f\r\u0001\u0000\u0000\u0000\r\u000e\u0005\u0000"+
-		"\u0000\u0001\u000e\u0001\u0001\u0000\u0000\u0000\u000f\u0010\u0005\b\u0000"+
-		"\u0000\u0010\u0011\u0005\u0001\u0000\u0000\u0011\u0015\u0003\u0006\u0003"+
-		"\u0000\u0012\u0014\u0003\u0004\u0002\u0000\u0013\u0012\u0001\u0000\u0000"+
-		"\u0000\u0014\u0017\u0001\u0000\u0000\u0000\u0015\u0013\u0001\u0000\u0000"+
-		"\u0000\u0015\u0016\u0001\u0000\u0000\u0000\u0016\u0018\u0001\u0000\u0000"+
-		"\u0000\u0017\u0015\u0001\u0000\u0000\u0000\u0018\u0019\u0005\u0002\u0000"+
-		"\u0000\u0019\u0003\u0001\u0000\u0000\u0000\u001a\u001b\u0005\u0003\u0000"+
-		"\u0000\u001b(\u0003\u0006\u0003\u0000\u001c\u001d\u0005\u0004\u0000\u0000"+
-		"\u001d(\u0003\u0006\u0003\u0000\u001e\u001f\u0005\u0005\u0000\u0000\u001f"+
-		"(\u0005\t\u0000\u0000 (\u0005\u0006\u0000\u0000!(\u0003\u0006\u0003\u0000"+
-		"\"#\u0005\n\u0000\u0000#(\u0005\t\u0000\u0000$%\u0005\u000b\u0000\u0000"+
-		"%(\u0003\u0006\u0003\u0000&(\u0005\b\u0000\u0000\'\u001a\u0001\u0000\u0000"+
-		"\u0000\'\u001c\u0001\u0000\u0000\u0000\'\u001e\u0001\u0000\u0000\u0000"+
-		"\' \u0001\u0000\u0000\u0000\'!\u0001\u0000\u0000\u0000\'\"\u0001\u0000"+
-		"\u0000\u0000\'$\u0001\u0000\u0000\u0000\'&\u0001\u0000\u0000\u0000(\u0005"+
-		"\u0001\u0000\u0000\u0000)*\u0005\t\u0000\u0000*,\u0005\u0007\u0000\u0000"+
-		"+)\u0001\u0000\u0000\u0000,/\u0001\u0000\u0000\u0000-+\u0001\u0000\u0000"+
-		"\u0000-.\u0001\u0000\u0000\u0000.0\u0001\u0000\u0000\u0000/-\u0001\u0000"+
-		"\u0000\u000001\u0005\t\u0000\u00001\u0007\u0001\u0000\u0000\u0000\u0004"+
-		"\u000b\u0015\'-";
+		"\u0006\u0000\u00009\u0000\u000b\u0001\u0000\u0000\u0000\u0002\u0010\u0001"+
+		"\u0000\u0000\u0000\u0004(\u0001\u0000\u0000\u0000\u0006.\u0001\u0000\u0000"+
+		"\u0000\b\n\u0003\u0002\u0001\u0000\t\b\u0001\u0000\u0000\u0000\n\r\u0001"+
+		"\u0000\u0000\u0000\u000b\t\u0001\u0000\u0000\u0000\u000b\f\u0001\u0000"+
+		"\u0000\u0000\f\u000e\u0001\u0000\u0000\u0000\r\u000b\u0001\u0000\u0000"+
+		"\u0000\u000e\u000f\u0005\u0000\u0000\u0001\u000f\u0001\u0001\u0000\u0000"+
+		"\u0000\u0010\u0011\u0005\b\u0000\u0000\u0011\u0012\u0005\u0001\u0000\u0000"+
+		"\u0012\u0016\u0003\u0006\u0003\u0000\u0013\u0015\u0003\u0004\u0002\u0000"+
+		"\u0014\u0013\u0001\u0000\u0000\u0000\u0015\u0018\u0001\u0000\u0000\u0000"+
+		"\u0016\u0014\u0001\u0000\u0000\u0000\u0016\u0017\u0001\u0000\u0000\u0000"+
+		"\u0017\u0019\u0001\u0000\u0000\u0000\u0018\u0016\u0001\u0000\u0000\u0000"+
+		"\u0019\u001a\u0005\u0002\u0000\u0000\u001a\u0003\u0001\u0000\u0000\u0000"+
+		"\u001b\u001c\u0005\u0003\u0000\u0000\u001c)\u0003\u0006\u0003\u0000\u001d"+
+		"\u001e\u0005\u0004\u0000\u0000\u001e)\u0003\u0006\u0003\u0000\u001f \u0005"+
+		"\u0005\u0000\u0000 )\u0005\t\u0000\u0000!)\u0005\u0006\u0000\u0000\")"+
+		"\u0003\u0006\u0003\u0000#$\u0005\n\u0000\u0000$)\u0005\t\u0000\u0000%"+
+		"&\u0005\u000b\u0000\u0000&)\u0003\u0006\u0003\u0000\')\u0005\b\u0000\u0000"+
+		"(\u001b\u0001\u0000\u0000\u0000(\u001d\u0001\u0000\u0000\u0000(\u001f"+
+		"\u0001\u0000\u0000\u0000(!\u0001\u0000\u0000\u0000(\"\u0001\u0000\u0000"+
+		"\u0000(#\u0001\u0000\u0000\u0000(%\u0001\u0000\u0000\u0000(\'\u0001\u0000"+
+		"\u0000\u0000)\u0005\u0001\u0000\u0000\u0000*+\u0005\t\u0000\u0000+-\u0005"+
+		"\u0007\u0000\u0000,*\u0001\u0000\u0000\u0000-0\u0001\u0000\u0000\u0000"+
+		".,\u0001\u0000\u0000\u0000./\u0001\u0000\u0000\u0000/1\u0001\u0000\u0000"+
+		"\u00000.\u0001\u0000\u0000\u000012\u0005\t\u0000\u00002\u0007\u0001\u0000"+
+		"\u0000\u0000\u0004\u000b\u0016(.";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

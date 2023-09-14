@@ -1,5 +1,5 @@
 grammar DummyFlow ;
-program : model+ EOF ; 
+program : model* EOF ; 
 model : ID '(' tensor layer* ')' ;
 
 layer : 'max' tensor #Max

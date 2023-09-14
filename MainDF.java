@@ -2,7 +2,7 @@ import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 import java.util.*;
 
-class MainDf {
+class MainDF {
     static void print(String fmt, Object ...args) {
         System.out.print(String.format(fmt, args));
     }
@@ -29,7 +29,7 @@ class MainDf {
             return;
         case "Model":
             println("\n%s = Sequential([", t.getChild(0).getText());
-            print("\tlayers.Input(shape=");
+            print("    layers.Input(shape=");
             generateCode(t.getChild(2));
             println("),");
             for (int c=3;c<t.getChildCount()-1;c++) {
@@ -42,33 +42,33 @@ class MainDf {
             println("])");
             return;
         case "Max":
-            print("\tlayers.MaxPooling%dD(", 1 + t.getChild(1).getChildCount() / 2);
+            print("    layers.MaxPooling%dD(", 1 + t.getChild(1).getChildCount() / 2);
             generateCode(t.getChild(1));
             print(")");
             return;
         case "Avg":
-            print("\tlayers.AveragePooling%dD(", 1 + t.getChild(1).getChildCount() / 2);
+            print("    layers.AveragePooling%dD(", 1 + t.getChild(1).getChildCount() / 2);
             generateCode(t.getChild(1));
             print(")");
             return;
         case "Dropout":
-            print("\tlayers.Dropout(%s)", t.getChild(1).getText());
+            print("    layers.Dropout(%s)", t.getChild(1).getText());
             return;
         case "Normalization":
-            print("\tlayers.Normalization()");
+            print("    layers.Normalization()");
             return;
         case "Dense":
-            print("\tlayers.Dense(");
+            print("    layers.Dense(");
             generateCode(t.getChild(0));
             print(")");
             return;
         case "ElementWise":
             String e_op = t.getChild(0).getText();
             String num = t.getChild(1).getText();
-            if (e_op.equals("+")) print("\tlayers.Rescaling(1.0, offset=%s)", num);
-            else if (e_op.equals("-")) print("\tlayers.Rescaling(1.0, offset=-%s)", num);
-            else if (e_op.equals("*")) print("\tlayers.Rescaling(%s, offset=0)", num);
-            else if (e_op.equals("/")) print("\tlayers.Rescaling(1/%s, offset=0)", num);
+            if (e_op.equals("+")) print("    layers.Rescaling(1.0, offset=%s)", num);
+            else if (e_op.equals("-")) print("    layers.Rescaling(1.0, offset=-%s)", num);
+            else if (e_op.equals("*")) print("    layers.Rescaling(%s, offset=0)", num);
+            else if (e_op.equals("/")) print("    layers.Rescaling(1/%s, offset=0)", num);
             return;
         case "TensorWise":
             String t_op = t.getChild(0).getText();
@@ -78,12 +78,12 @@ class MainDf {
                 String width = height;
                 if (tensor.getChildCount() >= 2)
                     width = tensor.getChild(2).getText();
-                print("\tlayers.Resizing(%s, %s)", height, width);
+                print("    layers.Resizing(%s, %s)", height, width);
             } else if (t_op.equals("->"))
                 if (tensor.getChildCount() == 1 && tensor.getChild(0).getText().equals("0"))
-                    print("\tlayers.Flatten()");
+                    print("    layers.Flatten()");
                 else {
-                    print("\tlayers.Reshape(");
+                    print("    layers.Reshape(");
                     generateCode(tensor);
                     print(")");
                 }
@@ -94,11 +94,11 @@ class MainDf {
                 String convShape = (tensor.getChildCount() >= 2) ? (tensor.getChild(2).getText()) : ("");
                 for (int c=4;c<tensor.getChildCount();c+=2)
                     convShape += "," + tensor.getChild(c).getText();
-                print("\tlayers.Conv%dD%s(%s, (%s))", dim, transpose, filters, convShape);
+                print("    layers.Conv%dD%s(%s, (%s))", dim, transpose, filters, convShape);
             }
             return;
         case "Activation":
-            print("\tlayers.Activation(\"%s\")", t.getText());
+            print("    layers.Activation(\"%s\")", t.getText());
             return;
         case "Tensor":
             print("(%s", t.getChild(0).getText());
@@ -126,7 +126,3 @@ class MainDf {
         generateCode(tree);
     }
 }
-
-//java -jar antlr.jar DummyFlow.g4 -o gen
-//javac -cp antlr.jar:gen *.java gen/*.java -d gen
-//java -cp antlr.jar:gen MainDf
