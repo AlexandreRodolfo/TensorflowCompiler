@@ -27,6 +27,7 @@ Operações podem ser Element Wise, afetando todos os elementos do Tensor sem af
 - Subtração (-)
 - Multiplicação (*)
 - Divisão (/)
+
 Ou Tensor Wise, interferindo diretamente em sua forma e/ou elementos
 - Redimensionar (~>)
 - Reformar (->)
