@@ -10,7 +10,9 @@
 
 # Motivação
 A Inteligência Artificial (IA) tem experimentado um notável crescimento nos últimos anos, desempenhando um papel importante em nossa graduação. As redes neurais, por sua vez, têm sido responsáveis por diversos avanços tecnológicos, contribuindo significativamente para áreas como processamento de imagens, reconhecimento de voz, medicina e até mesmo previsão do mercado financeiro.
+
 No entanto, à medida que a complexidade dos problemas abordados aumenta, a implementação de redes neurais, apesar de acessível para iniciantes, pode se tornar progressivamente intrincada. Isso muitas vezes dificulta a compreensão clara das etapas envolvidas, resultando em linhas de código complexas e abstrações difíceis de serem visualizadas.
+
 Nesse contexto, nosso projeto busca enfrentar esse desafio específico. Desenvolvemos um subconjunto de camadas que implementam redes neurais usando o TensorFlow, mas de maneira mais acessível, em uma linguagem simples e intuitiva, *DummyFlow*. Nosso objetivo é simplificar o processo de implementação de redes neurais, tornando-o mais transparente e compreensível, permitindo uma visão mais clara e didática das operações realizadas.
 
 # Entendendo a linguagem
