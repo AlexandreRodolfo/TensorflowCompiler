@@ -48,13 +48,13 @@ Para aprender mais sobre a sintaxe, visite o diretório *exemplos*, lá você en
 # Como compilar e executar o projeto?
 Compile a descrição com o antlr
 ```
-> java -jar antlr.jar DummyFlow.g4 -o gen
+java -jar antlr.jar DummyFlow.g4 -o gen
 ```
 Compile os programas em Java
 ```
-> javac -cp antlr.jar:gen *.java gen/*.java -d gen
+javac -cp antlr.jar:gen *.java gen/*.java -d gen
 ```
 Execute o compilador, e automaticamente será impresso na tela o resultado do seu arquivo, bem como ficará salva uma cópia em Python no mesmo diretório do arquivo para melhor lhe auxiliar. OBS: Os arquivos precisam ser passados como parâmetro!
 ```
-> java -cp antlr.jar:gen MainDF exemplos/*.df
+java -cp antlr.jar:gen MainDF exemplos/*.df
 ```
